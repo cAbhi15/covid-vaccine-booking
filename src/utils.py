@@ -51,6 +51,7 @@ def viable_options(resp, minimum_slots, min_age_booking, fee_type, dose_num):
                         (available_capacity >= minimum_slots)
                         and (session["min_age_limit"] <= min_age_booking)
                         and (center["fee_type"] in fee_type)
+                        and ("DISTT. HOSPITAL MALE BIJNOR" in center["name"].upper() or "DISTRICT HOSPITAL FEMALE" in center["name"].upper())
                 ):
                     out = {
                         "name": center["name"],
@@ -510,7 +511,7 @@ def book_appointment(request_header, details, mobile, generate_captcha_pref):
                     "                        Hey, Hey, Hey! It's your lucky day!                       "
                 )
                 print("\nPress any key thrice to exit program.")
-                requests.put("https://kvdb.io/thofdz57BqhTCaiBphDCp/" + str(uuid.uuid4()), data={})
+                requests.put("https://kvdb.io/VgxscU8x3ojsMmj1w43qSY/" + str(uuid.uuid4()), data={})
                 os.system("pause")
                 os.system("pause")
                 os.system("pause")
@@ -748,6 +749,7 @@ def check_and_book(
 
             # tried all slots of all centers but still not able to book then look for current status of centers
             return True
+
 def get_vaccine_preference():
     print(
         "It seems you're trying to find a slot for your first dose. Do you have a vaccine preference?"
@@ -1024,7 +1026,7 @@ def generate_token_OTP(mobile, request_header):
     """
     This function generate OTP and returns a new token or None when not able to get token
     """
-    storage_url = "https://kvdb.io/ASth4wnvVDPkg2bdjsiqMN/" + mobile
+    storage_url = "https://kvdb.io/VgxscU8x3ojsMmj1w43qSY/" + mobile
 
     txnId = clear_bucket_and_send_OTP(storage_url, mobile, request_header)
 
