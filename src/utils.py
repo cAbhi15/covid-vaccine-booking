@@ -51,7 +51,6 @@ def viable_options(resp, minimum_slots, min_age_booking, fee_type, dose_num):
                         (available_capacity >= minimum_slots)
                         and (session["min_age_limit"] <= min_age_booking)
                         and (center["fee_type"] in fee_type)
-                        and ("DISTT. HOSPITAL MALE BIJNOR" in center["name"].upper() or "DISTRICT HOSPITAL FEMALE" in center["name"].upper())
                 ):
                     out = {
                         "name": center["name"],
